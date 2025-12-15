@@ -20,7 +20,6 @@ export const FormTextField: React.FC<FormTextFieldProps> = ({
       fullWidth
       margin="normal"
       sx={{
-        backgroundColor: "#fff",
         borderRadius: 2,
         "& .MuiInputBase-root": {
           borderRadius: 2,

@@ -19,7 +19,7 @@ import {
   useNavigate,
   useResolvedPath,
 } from "react-router-dom";
-import { DarkMode } from "@mui/icons-material";
+import { DarkMode, DoorBack } from "@mui/icons-material";
 import iconMapping from "../../utils/iconmapping";
 import { useAppThemeContext, useDrawercontext } from "../../contexts";
 
@@ -60,6 +60,7 @@ const ListitemLink: React.FC<IListItemProps> = ({
 };
 
 export const Sidebar: React.FC = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
   const { isDrawerOpen, toggleDrawerOpen, draweroptions } = useDrawercontext();
@@ -132,6 +133,12 @@ export const Sidebar: React.FC = () => {
                   <DarkMode></DarkMode>
                 </ListItemIcon>
                 <ListItemText primary="alterar tema" />
+              </ListItemButton>
+              <ListItemButton onClick={() => navigate("/login")}>
+                <ListItemIcon>
+                  <DoorBack></DoorBack>
+                </ListItemIcon>
+                <ListItemText primary="Sair" />
               </ListItemButton>
             </List>
           </Box>
