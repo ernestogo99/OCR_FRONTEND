@@ -85,10 +85,24 @@ const download = async (documentId: string): Promise<void | Error> => {
   }
 };
 
+const getFile = async (documentId: string): Promise<Blob | Error> => {
+  try {
+    const response = await api.get(`/documents/${documentId}/file`, {
+      responseType: "blob",
+    });
+
+    return response.data;
+  } catch (error: any) {
+    const message = error.response?.data?.message || "Erro ao carregar arquivo";
+    return new Error(message);
+  }
+};
+
 export const documentsService = {
   upload,
   findAll,
   findOne,
   askDocument,
   download,
+  getFile,
 };

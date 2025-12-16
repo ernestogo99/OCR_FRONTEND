@@ -19,7 +19,11 @@ import toast from "react-hot-toast";
 import { documentsService } from "../../shared/services";
 import type { Idocument } from "../../shared/interfaces";
 import { Visibility } from "@mui/icons-material";
-import { DocumentViewDialog } from "../../shared/components";
+import {
+  DocumentFileDialog,
+  DocumentViewDialog,
+} from "../../shared/components";
+import { useNavigate } from "react-router-dom";
 
 export const Documents = () => {
   const [documents, setDocuments] = useState<Idocument[]>([]);
@@ -28,17 +32,24 @@ export const Documents = () => {
     null
   );
   const [openDialog, setOpenDialog] = useState(false);
+  const [openFileDialog, setOpenFileDialog] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     documentsService.findAll().then((response) => {
       if (response instanceof Error) {
         toast.error(response.message);
       } else {
+        console.log(response);
         setDocuments(response);
       }
       setLoading(false);
     });
   }, []);
+
+  const handleInteract = (id: string) => {
+    navigate(`/documents/${id}/chat`);
+  };
 
   return (
     <BaseLayout tittle="Meus documentos">
@@ -82,7 +93,16 @@ export const Documents = () => {
                         <strong>Data</strong>
                       </TableCell>
                       <TableCell align="center">
-                        <strong>Ações</strong>
+                        <strong>Baixar arquivo com interações</strong>
+                      </TableCell>
+                      <TableCell align="center">
+                        <strong>Visualizar interações</strong>
+                      </TableCell>
+                      <TableCell align="center">
+                        <strong>Visualizar arquivo</strong>
+                      </TableCell>
+                      <TableCell align="center">
+                        <strong>Interagir</strong>
                       </TableCell>
                     </TableRow>
                   </TableHead>
@@ -114,6 +134,21 @@ export const Documents = () => {
                             <Visibility />
                           </IconButton>
                         </TableCell>
+                        <TableCell align="center">
+                          <IconButton
+                            onClick={() => {
+                              setSelectedDocumentId(doc.id);
+                              setOpenFileDialog(true);
+                            }}
+                          >
+                            <Visibility />
+                          </IconButton>
+                        </TableCell>
+                        <TableCell align="center">
+                          <IconButton onClick={() => handleInteract(doc.id)}>
+                            <Visibility />
+                          </IconButton>
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -128,6 +163,14 @@ export const Documents = () => {
         documentId={selectedDocumentId}
         onClose={() => {
           setOpenDialog(false);
+          setSelectedDocumentId(null);
+        }}
+      />
+      <DocumentFileDialog
+        open={openFileDialog}
+        documentId={selectedDocumentId}
+        onClose={() => {
+          setOpenFileDialog(false);
           setSelectedDocumentId(null);
         }}
       />

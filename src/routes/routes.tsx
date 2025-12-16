@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Documents, Login, Register, Upload } from "../pages";
+import { DocumentChatPage, Documents, Login, Register, Upload } from "../pages";
 import { Sidebar } from "../shared/components";
 
 export const route = createBrowserRouter([
@@ -19,6 +19,10 @@ export const route = createBrowserRouter([
       {
         path: "/meus_arquivos",
         element: <Documents />,
+      },
+      {
+        path: "/documents/:id/chat",
+        element: <DocumentChatPage />,
       },
     ],
   },
