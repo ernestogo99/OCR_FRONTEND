@@ -40,7 +40,6 @@ export const Documents = () => {
       if (response instanceof Error) {
         toast.error(response.message);
       } else {
-        console.log(response);
         setDocuments(response);
       }
       setLoading(false);

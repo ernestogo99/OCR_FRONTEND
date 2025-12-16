@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+## OCR FrontEnd
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/-ReactJs-61DAFB?logo=react&logoColor=white&style=for-the-badge)
+![Typescript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [System Features](#system-features)
+- [Prerequisites](#prerequisites)
+- [Folder Structure](#folder-structure)
+- [Technologies Used](#technologies-used)
+- [Project setup](#project-setup)
 
-## React Compiler
+## System Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- LLM Integration for Context and Explanation: The gemini Api provides a model which explain
+  or provide context for the extracted text to the users, users can make queries about the extracted text.
 
-## Expanding the ESLint configuration
+- View Uploaded Documents:The user can see a list with all of their user previously uploaded documents along with the extracted information and LLM interactions
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Auth: You can create a user and log in to upload your images and interact with them
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Download Documents with Extracted Text : the user can download the uploaded documents with the appended extracted text and LLM interactions.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Ensure you have the following installed on your system:
+
+- **Nodejs**
+- **Git** (For cloning the repository)
+
+## Folder Structure
+
+```
+/my-react-app
+│── /public
+│
+│── /src
+│   ├── /assets         # Imagens, ícones, estilos globais, fontes etc.
+│   ├── /pages          # Páginas principais da aplicação
+│   ├── /routes         # Configuração das rotas da aplicação
+│   ├── /shared         # Recursos compartilhados
+│   │   ├── /components # Componentes reutilizáveis (botões, tabelas, inputs, etc.)
+│   │   ├── /contexts   # Contextos do React (Context API)
+│   │
+│   │   ├── /interfaces # Tipagens e interfaces TypeScript
+│   │   ├── /layout     # Layouts padrão (ex: com menu lateral, cabeçalho etc.)
+│   │   ├── /services   # Serviços de API, requisições HTTP etc.
+│   │   ├── /themes     # Temas e estilos personalizados (ex: MUI Theme)
+│
+│   ├── App.tsx         # Componente principal da aplicação
+│   ├── main.tsx        # Ponto de entrada do React
+│   ├── vite.config.ts  # Configuração do Vite (se estiver usando Vite)
+│
+│── package.json
+│── tsconfig.json       # Configuração do TypeScript
+│── .eslintrc.js        # Configuração do ESLint
+│── .gitignore
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Technologies Used
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Typescript: Programming language for back-end
+- React: Library for front-end
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project setup
+
+```bash
+$ npm install
+```
+
+## Compile and run the project
+
+```bash
+# development
+$ npm run dev
 ```
