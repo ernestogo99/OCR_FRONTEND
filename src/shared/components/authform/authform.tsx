@@ -3,12 +3,16 @@ import React from "react";
 import { FormTextField } from "./formtextfield";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { LoginSchema, type Iuser, type loginData } from "../../interfaces";
+import {
+  LoginSchema,
+  type IuserRequest,
+  type loginData,
+} from "../../interfaces";
 import { zodResolver } from "@hookform/resolvers/zod";
 interface IauthFormProps {
   tittle: string;
   isLogin: boolean;
-  onSubmit: (data: Iuser) => void;
+  onSubmit: (data: IuserRequest) => void;
 }
 
 export const AuthForm: React.FC<IauthFormProps> = ({
@@ -42,7 +46,6 @@ export const AuthForm: React.FC<IauthFormProps> = ({
             p: 4,
           }}
         >
-          <Paper></Paper>
           <Typography fontSize={25} textAlign="center" fontWeight="bold" mb={2}>
             {tittle}
           </Typography>
@@ -78,9 +81,19 @@ export const AuthForm: React.FC<IauthFormProps> = ({
               <Button
                 fullWidth
                 variant="contained"
-                onClick={() => navigate("/cadastro")}
+                onClick={() => navigate("/cadastrar")}
               >
                 Cadastre-se
+              </Button>
+            )}
+
+            {!isLogin && (
+              <Button
+                fullWidth
+                variant="contained"
+                onClick={() => navigate("/login")}
+              >
+                Voltar
               </Button>
             )}
           </form>

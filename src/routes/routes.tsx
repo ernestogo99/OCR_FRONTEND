@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Login, Register } from "../pages";
+import { Documents, Login, Register, Upload } from "../pages";
 import { Sidebar } from "../shared/components";
 
 export const route = createBrowserRouter([
@@ -11,7 +11,16 @@ export const route = createBrowserRouter([
   {
     path: "/",
     element: <Sidebar />,
-    children: [],
+    children: [
+      {
+        path: "/upload",
+        element: <Upload />,
+      },
+      {
+        path: "/meus_arquivos",
+        element: <Documents />,
+      },
+    ],
   },
 
   {

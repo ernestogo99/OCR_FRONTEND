@@ -71,19 +71,14 @@ export const Sidebar: React.FC = () => {
   useEffect(() => {
     setdraweroptions([
       {
-        label: "Frutas",
+        label: "Upload de Arquivos",
         icon: "home",
-        path: "/frutas",
+        path: "/upload",
       },
       {
-        label: "Relatório de vendas",
+        label: "Meus Arquivos",
         icon: "sale",
-        path: "/vendas",
-      },
-      {
-        label: "Venda de frutas",
-        icon: "sale",
-        path: "/frutas/vendas",
+        path: "/meus_arquivos",
       },
     ]);
   }, []);
