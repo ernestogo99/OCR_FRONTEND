@@ -68,6 +68,12 @@ export const Sidebar: React.FC = () => {
 
   const { setdraweroptions } = useDrawercontext();
 
+  const handleLogout = () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    navigate("/login");
+  };
+
   useEffect(() => {
     setdraweroptions([
       {
@@ -129,7 +135,7 @@ export const Sidebar: React.FC = () => {
                 </ListItemIcon>
                 <ListItemText primary="alterar tema" />
               </ListItemButton>
-              <ListItemButton onClick={() => navigate("/login")}>
+              <ListItemButton onClick={handleLogout}>
                 <ListItemIcon>
                   <DoorBack></DoorBack>
                 </ListItemIcon>
