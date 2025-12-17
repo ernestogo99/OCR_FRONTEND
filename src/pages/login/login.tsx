@@ -18,7 +18,7 @@ export const Login = () => {
         localStorage.setItem("token", response.token);
 
         setTimeout(() => {
-          navigate("/");
+          navigate("/upload");
         }, 3000);
       }
     });
